@@ -18,9 +18,9 @@ const user = {
 };
 const navigation = [
   { name: "Jobs", href: "/jobs", current: true },
-  { name: "Feeds", href: "#", current: false },
-  { name: "Network", href: "#", current: false },
-  { name: "Calendar", href: "#", current: false },
+  { name: "Feeds", href: "/feeds", current: false },
+  { name: "Network", href: "/network", current: false },
+  { name: "Calendar", href: "/calendar", current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#" },
@@ -40,20 +40,16 @@ const userNavigation = [
         <div class="flex">
           <div class="flex flex-shrink-0 items-center">
             <nuxt-link to="/" class="font-bold text-xl text-teal-600"
-              >recruiter</nuxt-link
+              >recrut.io</nuxt-link
             >
           </div>
           <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
             <nuxt-link
+              v-slot="{ isActive }"
               v-for="item in navigation"
               :key="item.name"
               :to="item.href"
-              :class="[
-                item.current
-                  ? 'border-teal-500 text-gray-900 dark:text-gray-100'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300',
-                'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium',
-              ]"
+              class="inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300"
               :aria-current="item.current ? 'page' : undefined"
               >{{ item.name }}</nuxt-link
             >
@@ -175,3 +171,9 @@ const userNavigation = [
     </DisclosurePanel>
   </Disclosure>
 </template>
+
+<style scoped>
+.router-link-active {
+  @apply border-teal-500 text-gray-900 dark:text-gray-100;
+}
+</style>
